@@ -1,9 +1,11 @@
 const authService = require("./auth.service");
+const autoBind = require("auto-bind");
 
 class AuthController {
     #service;
 
     constructor() {
+        autoBind(this);
         this.#service = authService;
     }
 
