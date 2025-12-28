@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const OTPSchema = new Schema({
     code: { type: String, required: false, default: undefined },
@@ -13,3 +13,6 @@ const UserSchema = new Schema({
 },
     { timestamps: true }
 )
+
+const UserModel = model("user", UserSchema);
+module.exports = UserModel
