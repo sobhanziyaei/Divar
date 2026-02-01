@@ -12,7 +12,7 @@ class AuthService {
     }
 
     async sendOTP(mobile) {
-        const user = await this.checkExistByMobile(mobile);
+        const user = await this.checkExistByMobile(mobile, false);
         const now = new Date().getTime();
 
         const otp = {
@@ -37,9 +37,9 @@ class AuthService {
     async checkOTP(mobile, code) {
     }
 
-    async checkExistByMobile(mobile) {
+    async checkExistByMobile(mobile, throwError = true) {
         const user = await this.#model.findOne({ mobile })
-        if (!user) throw createHttpError.NotFound(AuthMessage.NotFound);
+        if (!user && throwError) throw createHttpError.NotFound(AuthMessage.NotFound);
         return user;
     }
 }
