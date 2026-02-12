@@ -11,7 +11,7 @@ const Authorization = async (req, res, next) => {
         const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
         if (data?.id) {
-            const user = await UserModel.findById(data.id, { accessToken: 0, otp: 0 }).lean();
+            const user = await UserModel.findById(data.id, { accessToken: 0, otp: 0, __v: 0, updatedAt: 0, verifiedMobile: 0 }).lean();
             if (!user) throw new createHttpError.Unauthorized(AuthorizationMessage.NotFoundAccount);
             req.user = user;
             return next();
