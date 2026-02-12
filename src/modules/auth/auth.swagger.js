@@ -74,3 +74,18 @@
  *          401:
  *              description: otp code expired or incorrect
  */
+
+/**
+ * @swagger
+ * 
+ * /auth/logout:
+ *  get:
+ *      summary: logout user
+ *      tags:
+ *          -   Auth
+ *      responses:
+ *          200:
+ *              description: logout successfully
+ *          401:
+ *              description: unauthorized
+ */
